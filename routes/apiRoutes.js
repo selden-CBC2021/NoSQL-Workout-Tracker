@@ -6,7 +6,7 @@ router.get("/workouts", (req, res) => {
     Workout.aggregate([
         {
             $addFields: {
-                totalWorkoutDuration: {
+                totalDuration: {
                 $sum: "$exercises.duration"
             }
         }
@@ -23,9 +23,30 @@ router.get("/workouts", (req, res) => {
             res.json(err);
         });
 })
-// api/workouts/range end point 
+//  gets all workouts in 7 day range  
 router.get("/workouts/range", (req, res) => {
-    Workout.find({})
+    Workout.aggregate([
+        {
+            $addFields: {
+                totalDuration: {
+                $sum: "$exercises.duration"
+            }
+        }
+    },
+    {
+        $sort: {
+            'day': -1
+        }
+    },
+    {
+        $limit: 7
+    },
+    {
+        $sort: {
+            'day': 1
+        }
+    }
+    ])
         .then(dbWorkout => {
             res.json(dbWorkout);
         }).catch(err => {
