@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Workout = require('../models/workout');
+const Workout = require('../models/workout.js');
 require ('dotenv').config();
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/workout", {
