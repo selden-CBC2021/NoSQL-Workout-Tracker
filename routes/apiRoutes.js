@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Workout = require("../models/Workout.js");
+const Workout = require("../models/Workout");
 
 // api/workouts endpoint
 router.get("/workouts", (req, res) => {
@@ -7,21 +7,21 @@ router.get("/workouts", (req, res) => {
         {
             $addFields: {
                 totalDuration: {
-                $sum: "$exercises.duration"
+                    $sum: "$exercises.duration"
+                }
             }
-        }
-    },
+        },
     {
         $sort: {
             'day': 1
         }
     }
     ])
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        }).catch(err => {
-            res.json(err);
-        });
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+    }).catch(err => {
+        res.json(err);
+    });
 })
 //  gets all workouts in 7 day range  
 router.get("/workouts/range", (req, res) => {
