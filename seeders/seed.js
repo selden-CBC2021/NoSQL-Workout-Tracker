@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Workout = require('../models/workout.js');
+const db = require('../models');
 require ('dotenv').config();
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/workout", {
@@ -125,8 +125,8 @@ const workoutSeed = [
   },
 ];
 
-Workout.deleteMany({})
-  .then(() => Workout.collection.insertMany(workoutSeed))
+db.Workout.deleteMany({})
+  .then(() => db.Workout.collection.insertMany(workoutSeed))
   .then((data) => {
     console.log(data.result + ' records inserted!');
     process.exit(0);
