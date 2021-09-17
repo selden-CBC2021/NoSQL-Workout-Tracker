@@ -70,8 +70,9 @@ router.put("/workouts/:id", (req, res) => {
     let newData = req.body;
 
     Workout.findOneAndUpdate({_id: id}, {
-        $push: {exercises: newData}
-    }).then(workoutUpdate => {
+        $push: { exercises: newData } },
+        { new: true }
+    ).then(workoutUpdate => {
         res.send(workoutUpdate);
     }).catch(err => {
         res.json(err);
