@@ -26,8 +26,7 @@ mongoose.connect(
   );
     // requiring routes/index.js which contains html + api routes
   app.use(require("./routes/index"));
-  app.use(require("./routes/apiRoutes"))
-  app.use(require("./routes/htmlRoutes"))
+  
  
 
   app.listen(PORT, () => {
