@@ -4,7 +4,7 @@
 ## Installation
 - Clone this repository, run 'npm install', then 'npm run seed' to seed the MongoDB.
 ## Usage
-- View the live application [Here](https://thawing-wave-27284.herokuapp.com/stats) deployed at Heroku
+- View the live application [Here](https://thawing-wave-27284.herokuapp.com) deployed at Heroku
 - ![alt text](public/images/fitness1.png)
 - ![alt text](public/images/fitness2.png)
 - ![alt text](public/images/fitness3.png)
